@@ -9,7 +9,14 @@ const app = express();
 
 // using middleware
 app.use(express.json());
-app.use(cors());
+const allowedOrigins = [
+  'https://chatbuddy-theta.vercel.app', // Vercel frontend URL
+];
+
+app.use(cors({
+  origin: allowedOrigins,
+  credentials: true,
+}));
 
 //importing routes
 import userRoutes from "./routes/userRoutes.js";
